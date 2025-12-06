@@ -1,0 +1,80 @@
+.dateSelection {
+  font-size: 11px;
+  margin: 0;
+}
+
+.style {
+  padding-top: var(--content-padding);
+
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  section {
+    a {
+      text-decoration: none;
+    }
+  }
+}
+
+.chart {
+  width: 100%;
+  height: max(21vh, 180px);
+}
+
+.summaryChart {
+  width: 100%;
+  height: max(31vh, 250px);
+}
+
+.currencySummaryChart {
+  width: 100%;
+  height: max(21vh, 180px);
+}
+
+.events {
+  margin: 0 var(--content-padding);
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.4em;
+
+  font-weight: bolder;
+
+  a {
+    text-decoration: none;
+  }
+
+  li {
+    data {
+      font-size: 0.9em;
+      display: inline-block;
+      transform: translateY(-0.1em);
+      opacity: 0.6;
+    }
+  }
+
+  > ul {
+    padding: 0;
+    list-style: none;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.4em;
+
+    ul {
+      padding-left: 1em;
+      list-style: none;
+
+      font-size: 0.85em;
+      font-weight: normal;
+
+      margin: 0.4em 0;
+
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 0.4em 1em;
+    }
+  }
+}

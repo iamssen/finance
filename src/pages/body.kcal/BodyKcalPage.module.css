@@ -1,0 +1,25 @@
+.style {
+  display: flex;
+  flex-direction: column;
+
+  --chart-height: max(21vh, 180px);
+
+  [role='figure'] {
+    width: 100%;
+    height: var(--chart-height);
+  }
+
+  [role='grid'] {
+    width: 100% !important;
+    flex: 1;
+  }
+}
+
+.dialogPosition {
+  width: calc(100vw - var(--side-container-width, 0));
+  height: calc(var(--chart-height) + env(safe-area-inset-top));
+  top: 0;
+  left: var(--side-container-width, 0);
+
+  padding-top: max(env(safe-area-inset-top), 20px);
+}

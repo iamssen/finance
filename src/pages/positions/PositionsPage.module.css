@@ -1,0 +1,104 @@
+.article {
+  padding: var(--content-padding);
+}
+
+.header {
+  summary {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+
+    font-size: 0.9em;
+
+    dt {
+      opacity: 0.6;
+      font-size: 0.8em;
+    }
+
+    dd:not(:first-of-type) {
+      opacity: 0.6;
+    }
+
+    data[data-format='USD'] {
+      font-weight: bold;
+    }
+  }
+
+  table {
+    font-size: 0.9em;
+
+    th {
+      text-align: left;
+      font-weight: normal;
+    }
+
+    thead {
+      opacity: 0.6;
+      font-size: 0.8em;
+    }
+
+    tbody {
+      td {
+        text-align: right;
+        padding-right: 0.5em;
+
+        &:last-child {
+          text-align: left;
+        }
+      }
+
+      data[data-format='USD'] {
+        font-weight: bold;
+      }
+    }
+  }
+
+  margin-bottom: 1em;
+}
+
+.grid {
+  margin: 0 calc(var(--content-padding) * -1);
+}
+
+.description {
+  margin-top: 2em;
+  font-size: 0.9em;
+
+  p {
+    line-height: 140%;
+
+    margin: 0.5em 0;
+  }
+}
+
+.index {
+  list-style: none;
+  padding: var(--content-padding);
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.badge {
+  position: relative;
+
+  figcaption {
+    position: absolute;
+    top: 5px;
+    left: 0;
+    right: 0;
+
+    font-weight: bold;
+    font-size: 0.7em;
+    text-align: center;
+
+    time {
+      opacity: 0.5;
+    }
+  }
+}

@@ -1,0 +1,26 @@
+.style {
+  list-style: none;
+  padding: 0 var(--content-padding);
+  display: flex;
+  gap: 1em;
+
+  font-size: 11px;
+
+  li {
+    cursor: pointer;
+
+    background-color: currentColor;
+    border: 2px solid currentColor;
+
+    padding: 0.2em 0.8em;
+    border-radius: 1em;
+
+    span {
+      color: #ffffff;
+    }
+
+    &[data-selected='false'] {
+      background-color: transparent;
+    }
+  }
+}

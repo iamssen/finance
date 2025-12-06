@@ -1,0 +1,47 @@
+.style {
+  padding: var(--content-padding);
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  h2 {
+    font-size: 19px;
+    font-weight: normal;
+    margin-bottom: 0.4rem;
+
+    svg {
+      transform: translateY(3px) scale(1.1);
+    }
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    a {
+      text-decoration: none;
+      background-color: var(--box-background);
+      display: block;
+
+      padding: 1em;
+      border-radius: var(--section-radius);
+    }
+  }
+}
+
+.trades {
+  ul {
+    flex-direction: row;
+
+    li {
+      flex: 1;
+    }
+  }
+}

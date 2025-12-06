@@ -1,0 +1,56 @@
+.gridCellDanger {
+  background-color: #5b0505;
+}
+
+.gridCellSuperDanger {
+  background-color: #af1717;
+}
+
+.gridCellWeek {
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  > * {
+    line-height: normal;
+  }
+
+  time {
+    font-size: 0.9em;
+    letter-spacing: -0.03em;
+    opacity: 0.6;
+  }
+}
+
+.gridCellDay {
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  > * {
+    line-height: normal;
+  }
+
+  > :first-child {
+    display: flex;
+    justify-content: space-between;
+
+    time {
+      font-size: 0.9em;
+      letter-spacing: -0.03em;
+      opacity: 0.6;
+    }
+
+    span {
+      transform: translateY(-1px);
+    }
+  }
+
+  > :last-child {
+    text-align: right;
+  }
+}

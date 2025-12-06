@@ -1,0 +1,104 @@
+.style {
+  *,
+  *::before,
+  *::after {
+    user-select: none;
+  }
+
+  section {
+    background-color: var(--box-background);
+
+    padding: var(--content-padding);
+    border-radius: var(--section-radius);
+
+    dl {
+      dt:not(:last-of-type),
+      dd:not(:last-of-type) {
+        padding-bottom: 0.1rem;
+      }
+
+      dt {
+        float: left;
+        text-align: left;
+        font-weight: normal;
+      }
+
+      dd {
+        text-align: right;
+      }
+
+      dd:after {
+        content: '';
+        display: block;
+        clear: both;
+      }
+
+      dt[data-depth='1'],
+      dt[data-depth='1'] + dd {
+        opacity: 0.5;
+        font-size: 0.8em;
+        padding-left: 1em;
+      }
+
+      dt[data-depth='2'],
+      dt[data-depth='2'] + dd {
+        opacity: 0.2;
+        font-size: 0.8em;
+        padding-left: 2em;
+      }
+
+      dt[data-stale='true'],
+      dt[data-stale='true'] + dd {
+        text-decoration: line-through;
+        opacity: 0.08;
+      }
+    }
+
+    margin-bottom: 1em;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit !important;
+
+    &:hover {
+      color: inherit !important;
+    }
+
+    &:global(.active) {
+      section {
+        background-color: var(--box-background-hover);
+      }
+    }
+  }
+
+  section[data-section='total-gain'] {
+    h1 {
+      font-size: 1em;
+    }
+
+    data[data-id='market-value'] {
+      width: 100%;
+      font-size: 2.2em;
+      font-weight: bold;
+
+      display: block;
+      margin: 0.1em 0;
+    }
+  }
+}
+
+.position {
+  list-style: none;
+  padding: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+
+  a {
+    text-decoration: none;
+  }
+
+  margin-bottom: 1em;
+}

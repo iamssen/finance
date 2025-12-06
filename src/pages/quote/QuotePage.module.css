@@ -1,0 +1,114 @@
+.dateSelection {
+  font-size: 11px;
+  padding: 0.5rem 0;
+}
+
+.grid {
+  margin-top: 0.5rem;
+  width: 100% !important;
+}
+
+.etfHoldings {
+  margin-top: 2em;
+
+  padding: 0;
+  list-style: none;
+
+  display: flex;
+  flex-wrap: wrap;
+
+  row-gap: 0.5em;
+  column-gap: 0.7em;
+
+  li {
+    font-size: 0.85em;
+
+    background-color: darkslateblue;
+    border-radius: 1em;
+    padding: 0.3em 0.8em;
+  }
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.details {
+  container-type: inline-size;
+
+  margin: var(--content-padding);
+  font-size: 0.9em;
+
+  header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    height: 4em;
+
+    h1 {
+      font-size: 1.2em;
+      flex: 1;
+      line-height: 1.1;
+    }
+
+    img {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background-color: white;
+    }
+  }
+
+  dl {
+    display: grid;
+
+    column-gap: 3em;
+    row-gap: 0.2em;
+
+    align-items: center;
+
+    dt,
+    dd {
+      white-space: nowrap;
+      word-break: keep-all;
+    }
+
+    dt {
+      font-weight: bold;
+      opacity: 0.5;
+    }
+
+    dd {
+      justify-self: end;
+
+      > sub {
+        opacity: 0.6;
+      }
+    }
+  }
+}
+
+@container (width < 700px) {
+  dl {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@container (width > 700px) {
+  dl {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@container (width > 1050px) {
+  dl {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+@container (width > 1400px) {
+  dl {
+    grid-template-columns: repeat(8, 1fr);
+  }
+}

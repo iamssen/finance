@@ -1,0 +1,7 @@
+.style {
+  transform: translateY(0.3em);
+
+  svg {
+    transform: translateY(0.1em);
+  }
+}

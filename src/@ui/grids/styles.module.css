@@ -1,0 +1,69 @@
+.gridStyle {
+  --rdg-border-color: #000000;
+
+  overscroll-behavior: none;
+
+  border: 0;
+
+  font-size: 0.8rem;
+
+  [role='columnheader'] {
+    font-size: 0.6rem;
+  }
+
+  [role='columnheader']:last-child,
+  [role='gridcell']:last-child {
+    border-right: 0;
+  }
+
+  [role='row']:last-child > [role='gridcell'] {
+    border-bottom: 0;
+  }
+}
+
+.gridRowNegative {
+  background-color: #212159;
+
+  &:hover {
+    background-color: #12123a;
+  }
+}
+
+.gridRowPositive {
+  background-color: #15360b;
+
+  &:hover {
+    background-color: #0d2805;
+  }
+}
+
+.gridRowUnimportant {
+  [role='gridcell'] > * {
+    opacity: 0.5;
+  }
+}
+
+.gridRowImportant {
+  [role='gridcell'] > * {
+    font-weight: bold;
+  }
+}
+
+.gridCellSpaceBetween {
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+
+  > sub,
+  > svg {
+    opacity: 0.5;
+  }
+}
+
+.gridCellRightAlign {
+  text-align: right;
+}
+
+.gridCellCenterAlign {
+  text-align: center;
+}

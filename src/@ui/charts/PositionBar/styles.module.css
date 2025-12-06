@@ -1,0 +1,54 @@
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.marker {
+  line {
+    stroke-width: 2px;
+    stroke: currentColor;
+  }
+
+  circle {
+    fill: currentColor;
+  }
+
+  text {
+    fill: currentColor;
+    text-anchor: middle;
+
+    font-size: 9px;
+
+    &:first-child {
+      font-size: 10px;
+      font-weight: bold;
+    }
+  }
+
+  &[data-marker='target'] {
+    color: #666666;
+  }
+
+  &[data-marker='trade'] {
+    color: #888888;
+  }
+
+  &[data-marker='current'] {
+    color: white;
+
+    circle {
+      animation: blink 0.7s linear infinite;
+    }
+  }
+
+  &[data-marker='child'] {
+    color: rgba(255, 255, 255, 0.2);
+  }
+}

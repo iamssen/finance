@@ -1,0 +1,158 @@
+.dateSelection {
+  font-size: 11px;
+}
+
+.values {
+  margin: var(--content-padding) 0;
+  padding: 0 var(--content-padding);
+
+  display: flex;
+  gap: 2em;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  a {
+    text-decoration: none;
+    user-select: none;
+
+    display: flex;
+    flex-direction: column;
+
+    word-break: keep-all;
+    white-space: nowrap;
+
+    h3 {
+      font-size: 0.9em;
+      font-weight: normal;
+    }
+
+    data {
+      font-size: 1.5em;
+      font-weight: bolder;
+
+      data {
+        font-size: 1em;
+      }
+    }
+
+    time {
+      font-size: 0.7em;
+      opacity: 0.4;
+    }
+  }
+}
+
+.peAndYields {
+  width: 100%;
+  padding: 0 var(--content-padding);
+
+  table-layout: fixed;
+
+  font-size: 0.8em;
+  color: #888888;
+
+  colgroup {
+    col:not(:first-child) {
+      width: 14%;
+    }
+  }
+
+  thead {
+    font-size: 0.8em;
+    color: color-mix(in srgb, currentColor 30%, black 70%);
+  }
+
+  th {
+    text-align: left;
+  }
+
+  th,
+  td {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  [data-highest='true'] {
+    color: #ffffff;
+  }
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.grid {
+  margin: var(--content-padding) 0;
+  padding: 0 var(--content-padding);
+
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr;
+  grid-auto-rows: 200px;
+  gap: 0.5rem;
+
+  > * {
+    border-radius: var(--section-radius);
+  }
+}
+
+.container {
+  container-type: inline-size;
+}
+
+@media (max-width: 768px) {
+  .peAndYields {
+    padding: 0;
+
+    th:first-child {
+      padding-left: 1em;
+    }
+  }
+
+  .grid {
+    padding: 0;
+    grid-template-columns: 1fr;
+  }
+}
+
+@container (width < 800px) {
+  .values {
+    gap: 1.2em;
+
+    a {
+      font-size: 0.9em;
+    }
+  }
+}
+
+@container (width > 800px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@container (width > 1200px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@container (width > 1600px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@container (width > 2000px) {
+  .grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@container (width > 2400px) {
+  .grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}

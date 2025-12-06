@@ -1,0 +1,25 @@
+.article {
+  --filter-height: 40px;
+
+  display: flex;
+  flex-direction: column;
+
+  [role='grid'] {
+    width: 100% !important;
+    flex: 1;
+  }
+
+  search {
+    form {
+      height: var(--filter-height, 0);
+
+      padding: 0;
+      margin: 0;
+      width: 100%;
+    }
+  }
+}
+
+.aside {
+  flex: 1;
+}

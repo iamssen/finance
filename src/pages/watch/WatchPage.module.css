@@ -1,0 +1,126 @@
+.grid {
+  padding: var(--content-padding);
+  list-style: none;
+
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+
+  li {
+    background-color: var(--box-background);
+    border-radius: var(--section-radius);
+
+    a {
+      text-decoration: none;
+      display: block;
+      height: 100%;
+
+      padding: 1em;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+
+      h3 {
+        font-size: 1em;
+      }
+
+      data {
+        font-size: 0.9em;
+      }
+
+      margin-bottom: 5px;
+    }
+
+    dl {
+      font-size: 0.9em;
+
+      dt:not(:last-of-type),
+      dd:not(:last-of-type) {
+        padding-bottom: 0.1rem;
+      }
+
+      dt {
+        float: left;
+        text-align: left;
+        font-weight: normal;
+      }
+
+      dd {
+        text-align: right;
+      }
+
+      dd:after {
+        content: '';
+        display: block;
+        clear: both;
+      }
+
+      dt[data-match='false'],
+      dt[data-match='false'] + dd {
+        opacity: 0.2;
+      }
+    }
+
+    &[data-match='0'] {
+      opacity: 0.5;
+
+      dl {
+        dt[data-match='false'],
+        dt[data-match='false'] + dd {
+          opacity: 0.3;
+        }
+      }
+    }
+
+    &[data-match-high='true'] {
+      background-color: #620909;
+    }
+
+    &[data-match-low='true'] {
+      background-color: #181867;
+    }
+  }
+}
+
+.container {
+  container-type: inline-size;
+}
+
+@container (width > 500px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@container (width > 750px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@container (width > 1000px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@container (width > 1250px) {
+  .grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@container (width > 1500px) {
+  .grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+@container (width > 1750px) {
+  .grid {
+    grid-template-columns: repeat(7, 1fr);
+  }
+}

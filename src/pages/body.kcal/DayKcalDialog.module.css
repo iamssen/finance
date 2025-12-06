@@ -1,0 +1,56 @@
+.style {
+  overflow-x: scroll;
+  overflow-y: hidden;
+
+  display: flex;
+  gap: 1em;
+
+  border: 0;
+
+  backdrop-filter: blur(3px);
+  background-color: rgba(0, 0, 0, 0.2);
+  color: #eeeeee;
+
+  thead {
+    tr {
+      td,
+      th {
+        border-bottom: 1px solid rgba(238, 238, 238, 0.3);
+      }
+    }
+  }
+
+  section[role='heading'] {
+    display: flex;
+    flex-direction: column;
+
+    font-weight: bold;
+
+    data {
+      font-size: 1.5em;
+    }
+  }
+
+  section:not([role='heading']) {
+    font-size: 0.8em;
+
+    h3 {
+      font-size: 1em;
+      font-weight: bold;
+    }
+
+    th {
+      font-weight: normal;
+      text-align: left;
+      padding-right: 1em;
+    }
+
+    th,
+    td {
+      white-space: nowrap;
+      word-break: keep-all;
+
+      vertical-align: baseline;
+    }
+  }
+}

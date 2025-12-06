@@ -1,0 +1,69 @@
+@keyframes blink {
+  0% {
+    background-color: var(--bg-color);
+  }
+  50% {
+    background-color: var(--blink-color);
+  }
+  100% {
+    background-color: var(--bg-color);
+  }
+}
+
+.style {
+  --bg-color: #154175;
+  --blink-color: #1e51a4;
+
+  &[data-rating='neutral'] {
+    animation: blink 1s infinite;
+  }
+
+  &[data-rating='over shooting'] {
+    --bg-color: #93142e;
+    --blink-color: #b6223e;
+
+    animation: blink 1s infinite;
+  }
+
+  &[data-rating='under shooting'] {
+    background-color: #066506;
+  }
+
+  h3 {
+    svg {
+      transform: translateY(0.15em);
+    }
+  }
+
+  ul {
+    margin-top: 0.3em;
+
+    list-style: none;
+    padding: 0;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 0.2em 1em;
+
+    font-size: 0.8em;
+
+    opacity: 0.5;
+
+    li {
+      white-space: nowrap;
+
+      data {
+        font-weight: bold;
+      }
+
+      &[data-rating='neutral'] {
+        opacity: 0.4;
+
+        data {
+          font-weight: unset;
+        }
+      }
+    }
+  }
+}

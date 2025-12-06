@@ -1,0 +1,29 @@
+.style {
+  font-size: 11px;
+
+  list-style: none;
+  margin: var(--content-padding) 0;
+  padding: 0 var(--content-padding);
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  display: flex;
+  align-items: center;
+  gap: 1em;
+
+  li {
+    cursor: pointer;
+
+    word-break: keep-all;
+    white-space: nowrap;
+
+    padding: 0.8em 1.2em;
+    border-radius: 1.5em;
+    background-color: var(--box-background);
+
+    &[aria-checked='true'] {
+      background-color: var(--box-background-hover);
+    }
+  }
+}

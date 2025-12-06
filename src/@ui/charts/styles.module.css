@@ -1,0 +1,307 @@
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.verticalLine {
+  color: white;
+
+  line {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1px;
+
+    stroke-dasharray: 1, 3;
+    stroke-dashoffset: 400;
+    animation: dash 10s linear infinite;
+  }
+
+  text {
+    text-anchor: end;
+    fill: currentColor;
+    font-size: 11px;
+
+    &[data-display='border'] {
+      opacity: 0.5;
+      stroke: black;
+      stroke-width: 4px;
+    }
+  }
+}
+
+.horizontalLine {
+  color: #242828;
+
+  line {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1px;
+  }
+
+  text {
+    text-anchor: end;
+    fill: currentColor;
+    font-size: 11px;
+
+    &[data-display='border'] {
+      opacity: 0.5;
+      stroke: black;
+      stroke-width: 4px;
+    }
+  }
+}
+
+.historyLine {
+  color: #77b6b6;
+
+  path {
+    fill: none;
+    stroke: currentColor;
+    opacity: 0.8;
+    stroke-width: 1px;
+  }
+
+  text {
+    text-anchor: start;
+    fill: currentColor;
+    font-size: 11px;
+
+    &[data-display='border'] {
+      opacity: 0.5;
+      stroke: black;
+      stroke-width: 4px;
+    }
+  }
+
+  circle {
+    fill: currentColor;
+    animation: blink 0.7s linear infinite;
+  }
+}
+
+.stackedHistoryArea {
+  color: white;
+
+  path[data-path='line'] {
+    fill: none;
+    stroke: currentColor;
+  }
+
+  path[data-path='area'] {
+    fill: currentColor;
+    opacity: 0.5;
+    stroke: none;
+  }
+}
+
+.point {
+  circle {
+    fill: currentColor;
+  }
+
+  text {
+    text-anchor: start;
+    fill: currentColor;
+    font-size: 11px;
+
+    &[data-display='border'] {
+      opacity: 0.5;
+      stroke: black;
+      stroke-width: 4px;
+    }
+  }
+}
+
+.historyBar {
+  color: rgba(255, 255, 255, 0.15);
+
+  rect {
+    fill: currentColor;
+  }
+}
+
+.multiHistoryBar {
+  [data-column='0'] {
+    color: #d02b2b;
+  }
+
+  [data-column='1'] {
+    color: #50aacc;
+  }
+
+  [data-column='2'] {
+    color: white;
+  }
+
+  rect {
+    fill: currentColor;
+  }
+
+  text {
+    text-anchor: middle;
+    fill: currentColor;
+    font-size: 9px;
+
+    &[data-display='border'] {
+      opacity: 0.5;
+      stroke: black;
+      stroke-width: 2px;
+    }
+
+    &[data-format='KRW'] {
+      transform: translateX(-0.2em);
+    }
+
+    &[data-negative] {
+      font-size: 11px;
+    }
+
+    &[data-negative='false'] {
+      fill: #25b72f;
+    }
+
+    &[data-negative='true'] {
+      fill: #4e86ee;
+    }
+  }
+}
+
+.stackedHistoryBar {
+  color: rgba(255, 255, 255, 0.15);
+
+  rect {
+    fill: currentColor;
+  }
+
+  text {
+    text-anchor: middle;
+    fill: #777777;
+    font-size: 9px;
+
+    &[data-display='border'] {
+      opacity: 0.5;
+      stroke: black;
+      stroke-width: 2px;
+    }
+
+    &[data-format='KRW'] {
+      transform: translateX(-0.2em);
+    }
+  }
+}
+
+.forecastHistoryLine {
+  color: #566767;
+
+  path {
+    fill: none;
+    stroke: currentColor;
+    opacity: 0.8;
+    stroke-width: 1px;
+
+    stroke-dasharray: 1, 2;
+    stroke-dashoffset: 400;
+  }
+}
+
+.priceLine {
+  color: white;
+
+  line {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1px;
+
+    stroke-dasharray: 1, 3;
+    stroke-dashoffset: 400;
+    animation: dash 10s linear infinite;
+  }
+
+  text {
+    text-anchor: end;
+    fill: currentColor;
+    font-size: 11px;
+
+    &[data-display='border'] {
+      opacity: 0.5;
+      stroke: black;
+      stroke-width: 4px;
+    }
+  }
+
+  &[data-wait-for='low'] {
+    color: #1b6a88;
+  }
+
+  &[data-wait-for='high'] {
+    color: #8d3a3a;
+  }
+}
+
+.tradePoints {
+  circle {
+    &[data-trade='buy'] {
+      fill: white;
+    }
+
+    &[data-trade='sell'] {
+      fill: red;
+    }
+  }
+}
+
+.dateLines {
+  line {
+    stroke: #212121;
+  }
+
+  text {
+    fill: #2d2d2d;
+    font-size: 11px;
+    font-weight: bolder;
+  }
+}
+
+.recessionIndicator {
+  rect {
+    fill: rgba(3, 47, 134, 0.4);
+  }
+}
+
+.eventIndicator {
+  color: #113f64;
+
+  line {
+    stroke: currentColor;
+  }
+
+  rect {
+    fill: currentColor;
+  }
+
+  circle {
+    fill: currentColor;
+  }
+
+  text {
+    text-anchor: end;
+    fill: currentColor;
+    font-size: 11px;
+    font-weight: bold;
+  }
+}

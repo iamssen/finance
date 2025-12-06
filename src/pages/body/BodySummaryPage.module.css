@@ -1,0 +1,35 @@
+.page {
+  padding-top: var(--content-padding);
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+
+  figure {
+    a {
+      text-decoration: none;
+    }
+
+    figcaption {
+      font-weight: bold;
+      font-size: 1.2em;
+      padding: 0 var(--content-padding);
+
+      margin-bottom: 0.3em;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      sub {
+        font-size: 0.8em;
+        opacity: 0.25;
+      }
+    }
+  }
+}
+
+.chart {
+  width: 100%;
+  height: max(21vh, 180px);
+}

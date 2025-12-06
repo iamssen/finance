@@ -1,0 +1,14 @@
+.style {
+  display: flex;
+  flex-direction: column;
+
+  [role='figure'] {
+    width: 100%;
+    height: max(21vh, 180px);
+  }
+
+  [role='grid'] {
+    width: 100% !important;
+    flex: 1;
+  }
+}

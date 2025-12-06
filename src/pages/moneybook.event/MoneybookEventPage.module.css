@@ -1,0 +1,90 @@
+.article {
+  --filter-height: 40px;
+
+  display: flex;
+  flex-direction: column;
+
+  search {
+    form {
+      height: var(--filter-height, 0);
+
+      padding: 0;
+      margin: 0;
+      width: 100%;
+    }
+  }
+}
+
+.header {
+  padding: var(--content-padding);
+  padding-bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5em;
+
+  h1 {
+    opacity: 0.7;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    span,
+    a {
+      word-break: keep-all;
+      white-space: nowrap;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    font-size: 1.3em;
+  }
+
+  h2 {
+    font-size: 1.1em;
+  }
+}
+
+.categories {
+  margin: 1em var(--content-padding) 1em auto;
+  max-width: 800px;
+  max-height: 10vh;
+  overflow-y: auto;
+
+  list-style: none;
+  padding: 0;
+
+  font-size: 0.8em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: flex-end;
+
+  column-gap: 1em;
+  row-gap: 2px;
+
+  li {
+    cursor: pointer;
+  }
+
+  [data-ratio='small'] {
+    font-size: 0.9em;
+    opacity: 0.8;
+  }
+
+  [data-ratio='too small'] {
+    font-size: 0.8em;
+    opacity: 0.6;
+  }
+}
+
+.chart {
+  width: 100%;
+  height: 20vh;
+}
+
+.grid {
+  flex: 1;
+}

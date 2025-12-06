@@ -1,0 +1,86 @@
+@import url('https://192.168.1.98:9004/font/GTH.css');
+
+html {
+  font-family:
+    GTH, 'Apple SD Gothic Neo', BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+    'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+    'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
+  word-spacing: 1px;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  box-sizing: border-box;
+
+  font-variant-numeric: tabular-nums;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  font-family:
+    GTH, 'Apple SD Gothic Neo', BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+    'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+    'Helvetica Neue', sans-serif;
+}
+
+html {
+  overscroll-behavior-y: none;
+}
+
+html,
+body {
+  --vh: 100dvh;
+
+  overflow-x: hidden;
+  margin: 0;
+  width: 100vw;
+  height: var(--vh);
+
+  background-color: black;
+  color: #eeeeee;
+
+  --content-padding: 1rem;
+  --section-radius: 0.3em;
+
+  --positive: green;
+  --negative: #6f9bf6;
+
+  --box-background: #333333;
+  --box-background-hover: #5b5bd2;
+}
+
+@media (display-mode: standalone) {
+  body {
+    --vh: 100lvh;
+  }
+}
+
+a[href] {
+  color: #ffffff;
+}
+
+a[href]:hover {
+  color: #ffffff;
+}
+
+sub {
+  vertical-align: unset;
+}
+
+a,
+[role='grid'] {
+  user-select: none;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+data {
+  word-break: keep-all;
+  white-space: nowrap;
+}

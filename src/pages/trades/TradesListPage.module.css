@@ -1,0 +1,21 @@
+.style {
+  padding: var(--content-padding);
+
+  ul {
+    list-style: none;
+    padding: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    a {
+      text-decoration: none;
+      background-color: var(--box-background);
+      display: block;
+
+      padding: 1em;
+      border-radius: var(--section-radius);
+    }
+  }
+}
