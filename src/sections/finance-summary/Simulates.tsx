@@ -1,4 +1,4 @@
-import type { ExpiryData, Quote } from '@iamssen/exocortex';
+import type { Quote } from '@iamssen/exocortex';
 import { Format, FormatConfig } from '@iamssen/exocortex-appkit/format';
 import type { ExtendedSummary } from '@ui/data-utils';
 import type { DetailedHTMLProps, HTMLAttributes, ReactNode } from 'react';
@@ -9,8 +9,8 @@ export interface SimulatesProps extends DetailedHTMLProps<
   HTMLElement
 > {
   summary: ExtendedSummary;
-  usdkrw: ExpiryData<Quote> | undefined;
-  jpykrw: ExpiryData<Quote> | undefined;
+  usdkrw: Quote | undefined;
+  jpykrw: Quote | undefined;
   quotes: Map<string, Quote>;
 }
 
@@ -36,8 +36,7 @@ export function Simulates({
           <dt>Current</dt>
           <dd>
             <sub>
-              <Format n={usdkrw?.data.price} />,{' '}
-              <Format n={jpykrw?.data.price} />,{' '}
+              <Format n={usdkrw?.price} />, <Format n={jpykrw?.price} />,{' '}
               <Format n={quotes.get('SPY')?.price} />
             </sub>
           </dd>

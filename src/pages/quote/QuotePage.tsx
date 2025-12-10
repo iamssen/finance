@@ -73,7 +73,7 @@ function Component({ symbol }: { symbol: string }) {
 
   const info = useQuoteInfo(symbol);
 
-  const { data: { data: financeData } = {} } = useQuery(api('portfolio'));
+  const { data: financeData } = useQuery(api('portfolio'));
   const { data: quoteData } = useQuery(api(`finance/quote/${symbol}`));
   const { data: statisticData } = useQuery(
     api(`finance/quote-statistics/${symbol}`),
@@ -86,15 +86,15 @@ function Component({ symbol }: { symbol: string }) {
     return financeData && financeData.holdings.index[symbol]
       ? joinHoldingAndQuote(
           financeData.holdings.index[symbol]!,
-          quoteData?.data,
+          quoteData,
           undefined,
         )
       : undefined;
-  }, [financeData, quoteData?.data, symbol]);
+  }, [financeData, quoteData, symbol]);
 
   const statistic = useMemo(() => {
-    return statisticData?.data && quoteData?.data
-      ? joinQuoteStatisticsAndQuote(statisticData.data, quoteData.data)
+    return statisticData && quoteData
+      ? joinQuoteStatisticsAndQuote(statisticData, quoteData)
       : undefined;
   }, [quoteData, statisticData]);
 
@@ -102,10 +102,10 @@ function Component({ symbol }: { symbol: string }) {
     return financeData && financeData.holdings.index[symbol]
       ? joinTradesAndQuotes(
           financeData.holdings.index[symbol]!.trades,
-          quoteData?.data,
+          quoteData,
         )
       : undefined;
-  }, [financeData, quoteData?.data, symbol]);
+  }, [financeData, quoteData, symbol]);
 
   const printDisplayName = useMemo(
     () => info.portfolio === 'kr' || info.portfolio === 'jp',
@@ -118,10 +118,10 @@ function Component({ symbol }: { symbol: string }) {
         <QuoteChart
           start={chartStartDate.value}
           info={info}
-          history={historyData.data}
-          quote={quoteData?.data}
+          history={historyData}
+          quote={quoteData}
           watch={financeData?.watches[symbol]}
-          statistic={statisticData?.data}
+          statistic={statisticData}
           trades={financeData?.holdings.index[symbol]?.trades}
           style={{
             width: '100%',
@@ -198,31 +198,25 @@ function Component({ symbol }: { symbol: string }) {
                   <span
                     style={{
                       color:
-                        quoteData.data.price > holding.holding.avgCostPerShare
+                        quoteData.price > holding.holding.avgCostPerShare
                           ? 'var(--positive)'
                           : 'var(--negative)',
                     }}
                   >
                     <Format
-                      format={quoteData.data.currency}
+                      format={quoteData.currency}
                       n={holding.holding.avgCostPerShare}
                     />
                     {' → '}
                   </span>
                 )}
-                <Format
-                  format={quoteData.data.currency}
-                  n={quoteData.data.price}
-                />
+                <Format format={quoteData.currency} n={quoteData.price} />
               </dd>
               <dt>CHANGE</dt>
               <dd>
-                <Format
-                  format={quoteData.data.currency}
-                  n={quoteData.data.change}
-                />{' '}
+                <Format format={quoteData.currency} n={quoteData.change} />{' '}
                 <sub>
-                  (<Format format="PERCENT" n={quoteData.data.changePercent} />)
+                  (<Format format="PERCENT" n={quoteData.changePercent} />)
                 </sub>
               </dd>
             </>

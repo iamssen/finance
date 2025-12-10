@@ -8,7 +8,7 @@ import { Page } from '../../Page.tsx';
 import styles from './MorePage.module.css';
 
 export function MorePage(): ReactNode {
-  const { data: { data: linksData } = {} } = useQuery(api('links'));
+  const { data: linksData } = useQuery(api('links'));
 
   return (
     <Page layout="scrollable" className={styles.style}>

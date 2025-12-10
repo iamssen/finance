@@ -15,7 +15,7 @@ export function useQuoteStatistics(
   return useMemo(() => {
     return quoteDatas.reduce((map, { data }) => {
       if (data) {
-        map.set(data.data.symbol, data.data);
+        map.set(data.symbol, data);
       }
       return map;
     }, new Map<string, QuoteStatistics>());

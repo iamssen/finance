@@ -25,14 +25,14 @@ export function EquityValueHistorySection({
 
   const { data: dataBenchmark } = useQuery(api('finance/sp500-pe'));
 
-  const { data: { data: financeData } = {} } = useQuery(api('portfolio'));
+  const { data: financeData } = useQuery(api('portfolio'));
 
   const data = useMemo(() => {
-    if (!historyData?.data.records || historyData.data.records.length === 0) {
+    if (!historyData?.records || historyData.records.length === 0) {
       return undefined;
     }
 
-    let draft = historyData.data.records.map(({ date, trailingPE }) => ({
+    let draft = historyData.records.map(({ date, trailingPE }) => ({
       date,
       value: trailingPE,
     }));
@@ -80,7 +80,7 @@ export function EquityValueHistorySection({
   return (
     <PeChart
       data={data}
-      benchmarkData={dataBenchmark?.data}
+      benchmarkData={dataBenchmark}
       watches={watches ?? EMPTY_WATCHES}
       start={start}
       style={{

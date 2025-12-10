@@ -33,9 +33,7 @@ export function QuoteChart({
   start,
   ...props
 }: QuoteChartProps): ReactNode {
-  const { data: { data: financeIndicatorData } = {} } = useQuery(
-    api('finance-indicator'),
-  );
+  const { data: financeIndicatorData } = useQuery(api('finance-indicator'));
 
   const chart = useMemo(
     () =>

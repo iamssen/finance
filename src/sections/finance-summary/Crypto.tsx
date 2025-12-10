@@ -22,21 +22,21 @@ export function Crypto({ holdings }: CryptoProps): ReactNode {
 
   const btcKimp = useMemo(() => {
     if (krwx && krwBtc && btcUsd?.quote) {
-      const krwBtcInUsd = krwBtc.trade_price / krwx.data.price;
+      const krwBtcInUsd = krwBtc.trade_price / krwx.price;
       return (krwBtcInUsd - btcUsd.quote.price) / btcUsd.quote.price;
     }
   }, [btcUsd, krwBtc, krwx]);
 
   const ethKimp = useMemo(() => {
     if (krwx && krwEth && ethUsd?.quote) {
-      const krwEthInUsd = krwEth.trade_price / krwx.data.price;
+      const krwEthInUsd = krwEth.trade_price / krwx.price;
       return (krwEthInUsd - ethUsd.quote.price) / ethUsd.quote.price;
     }
   }, [ethUsd, krwEth, krwx]);
 
   const usdtKimp = useMemo(() => {
     if (krwx && krwUsdt) {
-      return (krwUsdt.trade_price - krwx.data.price) / krwx.data.price;
+      return (krwUsdt.trade_price - krwx.price) / krwx.price;
     }
   }, [krwUsdt, krwx]);
 

@@ -49,7 +49,7 @@ export function View({
     }),
   );
 
-  const { data: { data: financeData } = {} } = useQuery(api(`portfolio`));
+  const { data: financeData } = useQuery(api(`portfolio`));
 
   const symbols = useMemo(() => {
     if (financeData) {

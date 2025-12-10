@@ -182,7 +182,9 @@ export function MarketPage(): ReactNode {
   const { data: marginDebt } = useQuery(api('finance/margin-debt'));
   const { data: buffettIndicator } = useQuery(api('finance/buffett-indicator'));
   const { data: fearAndGreed } = useQuery(api('finance/fear-and-greed'));
-  const { data: peAndYields } = useQuery(api('finance/pe-and-yields'));
+  const { data: peAndYields } = useQuery(
+    api('finance/pe-and-yields', {}, { select: (d) => d }),
+  );
 
   const kospiPe = useKospiPeChart(kospiPeWatches, benchmarkStartDate.value);
 
@@ -190,37 +192,35 @@ export function MarketPage(): ReactNode {
     <Page layout="scrollable" className={styles.container}>
       <header className={styles.values}>
         {fearAndGreed && (
-          <a href={fearAndGreed.data.link} rel="noreferrer" target="_blank">
+          <a href={fearAndGreed.link} rel="noreferrer" target="_blank">
             <h3>Fear and Greed</h3>
-            <data value={fearAndGreed.data.rating}>
-              {fearAndGreed.data.rating.toUpperCase()}
+            <data value={fearAndGreed.rating}>
+              {fearAndGreed.rating.toUpperCase()}
               <sub>
                 {' : '}
-                {fearAndGreed.data.fearAndGreed.at(-1)?.value.toFixed(0)}
+                {fearAndGreed.fearAndGreed.at(-1)?.value.toFixed(0)}
               </sub>
             </data>
-            <time dateTime={fearAndGreed.data.date}>
-              {fearAndGreed.data.date}
-            </time>
+            <time dateTime={fearAndGreed.date}>{fearAndGreed.date}</time>
           </a>
         )}
         {marginDebt && (
-          <a href={marginDebt.data.link} rel="noreferrer" target="_blank">
+          <a href={marginDebt.link} rel="noreferrer" target="_blank">
             <h3>Margin Debt</h3>
-            <data value={marginDebt.data.value.toLowerCase()}>
-              {marginDebt.data.value.toUpperCase()}
+            <data value={marginDebt.value.toLowerCase()}>
+              {marginDebt.value.toUpperCase()}
             </data>
-            <time dateTime={marginDebt.data.date}>{marginDebt.data.date}</time>
+            <time dateTime={marginDebt.date}>{marginDebt.date}</time>
           </a>
         )}
         {buffettIndicator && (
-          <a href={buffettIndicator.data.link} rel="noreferrer" target="_blank">
+          <a href={buffettIndicator.link} rel="noreferrer" target="_blank">
             <h3>Buffett Indicator</h3>
-            <data value={buffettIndicator.data.value.toLowerCase()}>
-              {buffettIndicator.data.value.toUpperCase()}
+            <data value={buffettIndicator.value.toLowerCase()}>
+              {buffettIndicator.value.toUpperCase()}
             </data>
-            <time dateTime={buffettIndicator.data.date}>
-              {buffettIndicator.data.date}
+            <time dateTime={buffettIndicator.date}>
+              {buffettIndicator.date}
             </time>
           </a>
         )}

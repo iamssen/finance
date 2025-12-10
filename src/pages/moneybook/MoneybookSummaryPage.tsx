@@ -35,10 +35,8 @@ export function MoneybookSummaryPage(): ReactNode {
   const jpyFormat = useFormat('JPY');
   const usdFormat = useFormat('USD');
 
-  const { data: { data } = {} } = useQuery(api('moneybook'));
-  const { data: { data: summaryHistory } = {} } = useQuery(
-    api('portfolio-history'),
-  );
+  const { data } = useQuery(api('moneybook'));
+  const { data: summaryHistory } = useQuery(api('portfolio-history'));
   const { summary: currentSummary } = useSummary();
 
   const summary = useMemo(() => {

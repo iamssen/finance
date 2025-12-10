@@ -26,11 +26,11 @@ export function US({ holdings }: USProps): ReactNode {
         <dd>
           <Format format="USD" n={holdings.gain.marketValue} />
         </dd>
-        {sp500Pe && sp500Pe.data.length > 0 && (
+        {sp500Pe && sp500Pe.length > 0 && (
           <>
             <dt data-depth="1">S&P 500 P/E</dt>
             <dd>
-              <Format n={sp500Pe.data.at(-1)?.value} />
+              <Format n={sp500Pe.at(-1)?.value} />
             </dd>
           </>
         )}

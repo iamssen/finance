@@ -28,9 +28,7 @@ export function MoneybookChart({
   end,
   ...props
 }: MoneybookChartProps): ReactNode {
-  const { data: { data: lifeIndicatorData } = {} } = useQuery(
-    api('life-indicator'),
-  );
+  const { data: lifeIndicatorData } = useQuery(api('life-indicator'));
 
   const krwFormat = useFormat('KRW');
 

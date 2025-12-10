@@ -12,6 +12,6 @@ export function useQuoteRefs(symbol: string): Link[] {
 
   return useMemo(() => {
     const fn = matchFunction(symbol);
-    return data?.data.filter((link) => link.matches?.some(fn)) ?? [];
-  }, [data?.data, symbol]);
+    return data?.filter((link) => link.matches?.some(fn)) ?? [];
+  }, [data, symbol]);
 }

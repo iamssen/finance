@@ -27,9 +27,7 @@ export function SkinChart({
   end,
   ...props
 }: SkinChartProps): ReactNode {
-  const { data: { data: skinIndicatorData } = {} } = useQuery(
-    api('skin-indicator'),
-  );
+  const { data: skinIndicatorData } = useQuery(api('skin-indicator'));
 
   const chart = useMemo(
     () => createSkinChartData({ data, start, end }),

@@ -12,7 +12,7 @@ const INITIAL_SELL = '2024-02-09';
 const REBUY_AFTER_DROP = '2025-04-07';
 
 export function usePosition(): PositionTrades | undefined {
-  const { data: { data: financeData } = {} } = useQuery(api(`portfolio`));
+  const { data: financeData } = useQuery(api(`portfolio`));
 
   const targetTrades = useMemo(() => {
     if (!financeData) {
@@ -20,9 +20,7 @@ export function usePosition(): PositionTrades | undefined {
     }
 
     const sliceFrom = financeData.holdings.us.trades.findLastIndex(
-      ({ date }) => {
-        return date < INITIAL_SELL;
-      },
+      ({ date }) => date < INITIAL_SELL,
     );
 
     return financeData.holdings.us.trades.slice(sliceFrom);

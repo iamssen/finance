@@ -25,11 +25,11 @@ export function RecessionIndicator({
   );
 
   const data = useMemo(() => {
-    return recessionData?.data.map(({ from, to }) => ({
+    return recessionData?.map(({ from, to }) => ({
       from: new Date(from).getTime(),
       to: new Date(to).getTime(),
     }));
-  }, [recessionData?.data]);
+  }, [recessionData]);
 
   const rects = useMemo(() => {
     return data

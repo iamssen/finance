@@ -26,9 +26,7 @@ export function WeightAndWaistChart({
   end,
   ...props
 }: WeightAndWaistChartProps): ReactNode {
-  const { data: { data: lifeIndicatorData } = {} } = useQuery(
-    api('life-indicator'),
-  );
+  const { data: lifeIndicatorData } = useQuery(api('life-indicator'));
 
   const chart = useMemo(
     () => createWeightAndWaistChartData({ data: data, start, end }),

@@ -8,7 +8,6 @@ export function useJoinedQuoteHistory(
   symbol: string | undefined,
 ): JoinedQuoteHistory | undefined {
   const { data: quoteData } = useQuery(api(`finance/quote/${symbol}`));
-
   const { data: quoteHistoryData } = useQuery(
     api(`finance/quote-history/${symbol}`),
   );
@@ -18,6 +17,6 @@ export function useJoinedQuoteHistory(
       return undefined;
     }
 
-    return joinQuoteHistoryAndQuote(quoteHistoryData.data, quoteData?.data);
+    return joinQuoteHistoryAndQuote(quoteHistoryData, quoteData);
   }, [quoteData, quoteHistoryData]);
 }

@@ -12,7 +12,7 @@ import styles from './MoneybookExpenses.module.css';
 export function MoneybookExpensesPage(): ReactNode {
   const { screen } = useScreen();
 
-  const { data: { data } = {} } = useQuery(api('moneybook'));
+  const { data } = useQuery(api('moneybook'));
 
   const expenses = useMemo<DESC<MoneybookHistory> | undefined>(() => {
     if (!data) {

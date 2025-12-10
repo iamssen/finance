@@ -20,8 +20,8 @@ export interface USDProps extends DetailedHTMLProps<
 export function USD({ financeData, view, ...props }: USDProps): ReactNode {
   const { data: usdkrw } = useQuery(api('finance/quote/KRW=X'));
 
-  const getCouponTax = usdkrw?.data
-    ? (amount: number) => (amount * usdkrw.data.price * 0.154) as KRW
+  const getCouponTax = usdkrw
+    ? (amount: number) => (amount * usdkrw.price * 0.154) as KRW
     : undefined;
 
   const staledBondsGain = new Map([

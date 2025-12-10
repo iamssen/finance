@@ -27,11 +27,11 @@ export function KR({ holdings }: KRProps): ReactNode {
         <dd>
           <Format format="KRW" n={holdings.gain.marketValue} />
         </dd>
-        {kospiPe && kospiPe.data.length > 0 && (
+        {kospiPe && kospiPe.length > 0 && (
           <>
             <dt data-depth="1">Kospi P/E</dt>
             <dd>
-              <Format n={kospiPe.data.at(-1)?.all} />
+              <Format n={kospiPe.at(-1)?.all} />
             </dd>
           </>
         )}

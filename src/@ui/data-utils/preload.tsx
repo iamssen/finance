@@ -14,7 +14,7 @@ const cache = new Map<string, AnalyzedQuoteInfo>();
 export function PreloadDataProvider({
   children,
 }: PreloadDataProviderProps): ReactNode {
-  const { data: { data: quotes } = {} } = useQuery(api('finance/quotes'));
+  const { data: quotes } = useQuery(api('finance/quotes'));
 
   const getQuoteInfo = useCallback(
     (symbol: string) => {

@@ -13,7 +13,7 @@ export function useQuotes(symbols: string[]): Map<string, Quote> {
   return useMemo(() => {
     return quoteDatas.reduce((map, { data }) => {
       if (data) {
-        map.set(data.data.symbol, data.data);
+        map.set(data.symbol, data);
       }
       return map;
     }, new Map<string, Quote>());

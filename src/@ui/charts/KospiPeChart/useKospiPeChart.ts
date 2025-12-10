@@ -19,7 +19,7 @@ export function useKospiPeChart(
     }
 
     return createKospiPeChartData({
-      data: data.data,
+      data,
       watches,
       start,
       end,

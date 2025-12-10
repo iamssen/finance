@@ -1,4 +1,4 @@
-import type { ExpiryData, Iso8601, QuoteHistory } from '@iamssen/exocortex';
+import type { Iso8601, QuoteHistory } from '@iamssen/exocortex';
 import { useQueries } from '@tanstack/react-query';
 import type { QuoteTrendChartProps } from '@ui/charts';
 import { QuoteTrendChart } from '@ui/charts';
@@ -12,7 +12,7 @@ export interface TrendComparingQuote {
 }
 
 export interface QuoteTrendSectionProps {
-  historyData: ExpiryData<QuoteHistory> | undefined;
+  historyData: QuoteHistory | undefined;
 
   comparingQuotes?: TrendComparingQuote[];
 
@@ -49,12 +49,12 @@ export function QuoteTrendSection({
       const { data } = comparingQuoteHistoryDatas[i];
 
       if (data) {
-        histories.push(data.data);
+        histories.push(data);
         historyLineStyles.push(style);
       }
     }
 
-    histories.push(historyData.data);
+    histories.push(historyData);
     historyLineStyles.push({});
 
     return { histories, historyLineStyles };

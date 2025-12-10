@@ -1,6 +1,6 @@
 import type { DV, ExpiryData, Iso8601 } from '@iamssen/exocortex';
 import { Format } from '@iamssen/exocortex-appkit/format';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, type DefaultError } from '@tanstack/react-query';
 import { type PriceLineData } from '@ui/cartesian-chart';
 import { BenchmarkChart } from '@ui/charts';
 import { api } from '@ui/query';
@@ -34,13 +34,16 @@ export function BenchmarkSection({
   children,
   durationInDays,
 }: BenchmarkSectionProps): ReactNode {
-  const { data } = useQuery<ExpiryData<DV<number>[]>>(api(benchmark));
+  const { data: chartData } = useQuery<
+    ExpiryData<DV<number>[]>,
+    DefaultError,
+    DV<number>[]
+  >(api(benchmark));
 
-  if (!data) {
+  if (!chartData) {
     return null;
   }
 
-  const chartData = data.data as DV<number>[];
   const lastRecord = chartData.at(-1);
 
   return (

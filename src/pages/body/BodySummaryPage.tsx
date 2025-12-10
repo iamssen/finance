@@ -29,8 +29,8 @@ import styles from './BodySummaryPage.module.css';
 import { rescuetimeSummaryQuery } from './env.ts';
 
 export function BodySummaryPage(): ReactNode {
-  const { data: { data } = {} } = useQuery(api('body'));
-  const { data: { data: rescuetimeData } = {} } = useQuery(api('rescuetime'));
+  const { data } = useQuery(api('body'));
+  const { data: rescuetimeData } = useQuery(api('rescuetime'));
 
   const firstMonth = useMemo(() => data?.months.at(0)?.month, [data?.months]);
 

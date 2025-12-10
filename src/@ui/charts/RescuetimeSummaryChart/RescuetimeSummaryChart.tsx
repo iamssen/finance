@@ -24,9 +24,7 @@ export function RescuetimeSummaryChart({
   end,
   ...props
 }: RescuetimeSummaryChartProps): ReactNode {
-  const { data: { data: lifeIndicatorData } = {} } = useQuery(
-    api('life-indicator'),
-  );
+  const { data: lifeIndicatorData } = useQuery(api('life-indicator'));
 
   const chart = useMemo(
     () =>

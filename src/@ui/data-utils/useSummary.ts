@@ -1,5 +1,4 @@
 import type {
-  ExpiryData,
   JoinedFX,
   JoinedHoldings,
   JPY,
@@ -25,8 +24,8 @@ import { useQuotes } from './useQuotes.ts';
 
 export interface SummaryValue {
   financeData: Portfolio | undefined;
-  usdkrw: ExpiryData<Quote> | undefined;
-  jpykrw: ExpiryData<Quote> | undefined;
+  usdkrw: Quote | undefined;
+  jpykrw: Quote | undefined;
   quotes: Map<string, Quote>;
 
   fxUSD: JoinedFX<USD> | undefined;
@@ -42,7 +41,7 @@ export interface SummaryValue {
 }
 
 export function useSummary(): SummaryValue {
-  const { data: { data: financeData } = {} } = useQuery(api('portfolio'));
+  const { data: financeData } = useQuery(api('portfolio'));
 
   const { data: usdkrw } = useQuery(api('finance/quote/KRW=X'));
   const { data: jpykrw } = useQuery(api('finance/quote/JPYKRW=X'));
@@ -92,10 +91,10 @@ export function useSummary(): SummaryValue {
             financeData.balances.usd,
             undefined,
             financeData.bonds.us,
-            usdkrw?.data,
+            usdkrw,
           )
         : undefined,
-    [financeData, usdkrw?.data],
+    [financeData, usdkrw],
   );
 
   const fxJPY = useMemo(
@@ -106,10 +105,10 @@ export function useSummary(): SummaryValue {
             financeData.balances.jpy,
             undefined,
             undefined,
-            jpykrw?.data,
+            jpykrw,
           )
         : undefined,
-    [financeData, jpykrw?.data],
+    [financeData, jpykrw],
   );
 
   const summary = useMemo(() => {
@@ -119,8 +118,8 @@ export function useSummary(): SummaryValue {
 
     return createExtendedSummary(
       financeData,
-      usdkrw.data,
-      jpykrw.data,
+      usdkrw,
+      jpykrw,
       us,
       kr,
       jp,

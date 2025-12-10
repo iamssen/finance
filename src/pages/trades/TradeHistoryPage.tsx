@@ -31,7 +31,7 @@ export function TradeHistoryPage({
   benchmarkSymbol,
   printDisplayName,
 }: TradeHistoryPageProps): ReactNode {
-  const { data: { data: financeData } = {} } = useQuery(api(`portfolio`));
+  const { data: financeData } = useQuery(api(`portfolio`));
 
   const { data: benchmarkHistory } = useQuery(
     api(`finance/quote-history/${benchmarkSymbol}`),
@@ -61,7 +61,7 @@ export function TradeHistoryPage({
           <TradeAmountChart
             role="figure"
             trades={aggregated}
-            benchmarkHistory={benchmarkHistory?.data}
+            benchmarkHistory={benchmarkHistory}
             currency={currency}
           />
         )}

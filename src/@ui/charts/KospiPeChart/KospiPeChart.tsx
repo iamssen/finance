@@ -26,9 +26,7 @@ export function KospiPeChart({
   chart,
   ...props
 }: KospiPeChartProps): ReactNode {
-  const { data: { data: financeIndicatorData } = {} } = useQuery(
-    api('finance-indicator'),
-  );
+  const { data: financeIndicatorData } = useQuery(api('finance-indicator'));
 
   return chart ? (
     <CartesianChart {...props}>

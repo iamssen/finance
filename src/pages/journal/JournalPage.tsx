@@ -6,7 +6,7 @@ import { JournalNewPage } from './JournalNewPage.tsx';
 import { JournalReadPage } from './JournalReadPage.tsx';
 
 export function JournalPage(): ReactNode {
-  const { data: { data } = {} } = useQuery(api('journal'));
+  const { data } = useQuery(api('journal'));
 
   if (!data) {
     return null;

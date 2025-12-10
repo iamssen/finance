@@ -26,9 +26,7 @@ export function EnergyAndExerciseChart({
   end,
   ...props
 }: EnergyAndExerciseChartProps): ReactNode {
-  const { data: { data: lifeIndicatorData } = {} } = useQuery(
-    api('life-indicator'),
-  );
+  const { data: lifeIndicatorData } = useQuery(api('life-indicator'));
 
   const chart = useMemo(
     () => createEnergyAndExerciseChartData({ data: data, start, end }),

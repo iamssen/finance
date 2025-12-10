@@ -27,9 +27,7 @@ export function PeChart({
   end,
   ...props
 }: PeChartProps): ReactNode {
-  const { data: { data: financeIndicatorData } = {} } = useQuery(
-    api('finance-indicator'),
-  );
+  const { data: financeIndicatorData } = useQuery(api('finance-indicator'));
 
   const chart = useMemo(
     () => createPeChartData({ data, benchmarkData, watches, start, end }),

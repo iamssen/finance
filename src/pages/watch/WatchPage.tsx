@@ -20,7 +20,7 @@ import { Page } from '../../Page.tsx';
 import styles from './WatchPage.module.css';
 
 export function WatchPage(): ReactNode {
-  const { data: { data: financeData } = {} } = useQuery(api('portfolio'));
+  const { data: financeData } = useQuery(api('portfolio'));
 
   const symbols = useMemo(
     () => Object.keys(financeData?.watches ?? {}),

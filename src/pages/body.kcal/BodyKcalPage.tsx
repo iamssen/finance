@@ -11,7 +11,7 @@ import styles from './BodyKcalPage.module.css';
 import { DayKcalDialog } from './DayKcalDialog.tsx';
 
 export function BodyKcalPage(): ReactNode {
-  const { data: { data } = {} } = useQuery(api('body'));
+  const { data } = useQuery(api('body'));
 
   const [openDetail, detailElement] = useDialog(DayKcalDialog);
 

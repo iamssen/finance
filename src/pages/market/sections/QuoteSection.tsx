@@ -48,21 +48,21 @@ export function QuoteSection({
 function Content({ symbol, chartStart }: QuoteSectionProps) {
   const info = useQuoteInfo(symbol);
 
-  const { data: { data: financeData } = {} } = useQuery(api('portfolio'));
-  const { data: quoteData } = useQuery(api(`finance/quote/${symbol}`));
-  const { data: statisticData } = useQuery(
+  const { data: financeData } = useQuery(api('portfolio'));
+  const { data: quote } = useQuery(
+    api(`finance/quote/${symbol}`, {}, { select: (d) => d }),
+  );
+  const { data: statistic } = useQuery(
     api(`finance/quote-statistics/${symbol}`),
   );
-  const { data: historyData } = useQuery(
-    api(`finance/quote-history/${symbol}`),
-  );
+  const { data: history } = useQuery(api(`finance/quote-history/${symbol}`));
 
   const matches = useMemo(() => {
-    if (financeData?.watches[symbol] && quoteData?.data) {
+    if (financeData?.watches[symbol] && quote?.data) {
       const match = evaluateWatchConditions(
         financeData.watches[symbol],
-        quoteData.data,
-        statisticData?.data,
+        quote.data,
+        statistic,
         undefined,
       );
 
@@ -76,20 +76,20 @@ function Content({ symbol, chartStart }: QuoteSectionProps) {
       high: undefined,
       low: undefined,
     };
-  }, [financeData, quoteData, statisticData, symbol]);
+  }, [financeData, quote, statistic, symbol]);
 
-  const attributes = useSectionAttributes(matches, quoteData?.refreshDate);
+  const attributes = useSectionAttributes(matches, quote?.refreshDate);
 
   return (
     <>
-      {historyData && (
+      {history && (
         <QuoteChart
           start={chartStart}
           info={info}
-          history={historyData.data}
-          quote={quoteData?.data}
+          history={history}
+          quote={quote?.data}
           watch={financeData?.watches[symbol]}
-          statistic={statisticData?.data}
+          statistic={statistic}
           trades={financeData?.holdings.index[symbol]?.trades}
         />
       )}

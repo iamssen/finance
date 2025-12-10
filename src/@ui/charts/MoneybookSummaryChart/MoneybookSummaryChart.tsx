@@ -34,13 +34,8 @@ export function MoneybookSummaryChart({
   format,
   ...props
 }: MoneybookSummaryChartProps): ReactNode {
-  const { data: { data: lifeIndicatorData } = {} } = useQuery(
-    api('life-indicator'),
-  );
-
-  const { data: { data: financeIndicatorData } = {} } = useQuery(
-    api('finance-indicator'),
-  );
+  const { data: lifeIndicatorData } = useQuery(api('life-indicator'));
+  const { data: financeIndicatorData } = useQuery(api('finance-indicator'));
 
   const chart = useMemo(
     () =>

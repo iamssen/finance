@@ -37,9 +37,9 @@ export function FXTableRow({
         </OutLink>
       </th>
       <th>
-        <Format format={format} n={quote.data.price} />
+        <Format format={format} n={quote.price} />
       </th>
-      {matches.data.map((m, i) => {
+      {matches.map((m, i) => {
         let n: number;
 
         if (m.match === 'ranged') {
@@ -54,7 +54,7 @@ export function FXTableRow({
           n = m.data.close;
         }
 
-        const updown = (quote.data.price - n) / n;
+        const updown = (quote.price - n) / n;
 
         return (
           <td

@@ -76,13 +76,13 @@ export function StopSign({ className, ...props }: StopSignProps): ReactNode {
   const { data: spyStatistic } = useQuery(api(`finance/quote-statistics/SPY`));
 
   const spy =
-    spyStatistic?.data && spyQuote?.data
-      ? joinQuoteStatisticsAndQuote(spyStatistic.data, spyQuote.data)
+    spyStatistic && spyQuote
+      ? joinQuoteStatisticsAndQuote(spyStatistic, spyQuote)
       : undefined;
 
   const { data: sp500PeData } = useQuery(api(`finance/sp500-pe`));
 
-  const sp500Pe = sp500PeData ? sp500PeData.data.at(-1)?.value : undefined;
+  const sp500Pe = sp500PeData ? sp500PeData.at(-1)?.value : undefined;
 
   const status = useMemo(() => {
     if (!fearAndGreed || !spy?.fiftyTwoWeekPosition || !sp500Pe) {
@@ -90,7 +90,7 @@ export function StopSign({ className, ...props }: StopSignProps): ReactNode {
       return;
     }
 
-    return check(fearAndGreed.data, spy.fiftyTwoWeekPosition, sp500Pe);
+    return check(fearAndGreed, spy.fiftyTwoWeekPosition, sp500Pe);
   }, [fearAndGreed, sp500Pe, spy]);
 
   if (!status) {

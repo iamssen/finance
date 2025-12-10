@@ -31,9 +31,7 @@ export function QuoteTrendChart({
   historyLineStyles,
   ...props
 }: QuoteTrendChartProps): ReactNode {
-  const { data: { data: financeIndicatorData } = {} } = useQuery(
-    api('finance-indicator'),
-  );
+  const { data: financeIndicatorData } = useQuery(api('finance-indicator'));
 
   const chart = useMemo(() => {
     const s = new Date(start).getTime();

@@ -48,6 +48,29 @@ function useCoordinates(): Coordinates {
   return coords;
 }
 
+function pick<T extends object, K extends keyof T>(
+  value: T,
+  ...keys: K[]
+): Pick<T, K> {
+  const result = {} as Pick<T, K>;
+
+  for (const key of keys) {
+    if (key in value) {
+      result[key] = value[key];
+    }
+  }
+
+  return result;
+}
+
+function usePick<T extends object, K extends keyof T>(
+  value: T,
+  ...keys: K[]
+): Pick<T, K> {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  return useMemo(() => pick(value, ...keys), [value, ...keys]);
+}
+
 export function JournalNewPage(): ReactNode {
   const coords = useCoordinates();
 
@@ -56,10 +79,10 @@ export function JournalNewPage(): ReactNode {
     [],
   );
 
-  // /${coords.longitude},${coords.latitude}
-  const { data: rego } = useQuery(api(`reverse-geocoding`, coords));
+  const position = usePick(coords, 'longitude', 'latitude');
 
-  const { data: weather } = useQuery(api(`weather`, coords));
+  const { data: rego } = useQuery(api(`reverse-geocoding`, position));
+  const { data: weather } = useQuery(api(`weather`, position));
 
   return (
     <div>

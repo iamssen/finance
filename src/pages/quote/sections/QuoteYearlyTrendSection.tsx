@@ -1,10 +1,10 @@
-import type { ExpiryData, QuoteHistory, QuoteInfo } from '@iamssen/exocortex';
+import type { QuoteHistory, QuoteInfo } from '@iamssen/exocortex';
 import { createQuoteYearlyTrendChartData, YearlyTrendChart } from '@ui/charts';
 import { type ReactNode, useMemo } from 'react';
 
 export interface QuoteYearlyTrendSectionProps {
   info: QuoteInfo;
-  historyData: ExpiryData<QuoteHistory> | undefined;
+  historyData: QuoteHistory | undefined;
 }
 
 export function QuoteYearlyTrendSection({
@@ -12,8 +12,8 @@ export function QuoteYearlyTrendSection({
   historyData,
 }: QuoteYearlyTrendSectionProps): ReactNode {
   const data = useMemo(() => {
-    return historyData?.data
-      ? createQuoteYearlyTrendChartData({ history: historyData.data, info })
+    return historyData
+      ? createQuoteYearlyTrendChartData({ history: historyData, info })
       : undefined;
   }, [historyData, info]);
 

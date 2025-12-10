@@ -16,13 +16,13 @@ export function EtfHoldingsSection({
 }: EtfHoldingsSectionProps): ReactNode {
   const { data } = useQuery(api(`finance/quote-etf-holdings/${symbol}`));
 
-  if (!data?.data.holdings) {
+  if (!data?.holdings) {
     return null;
   }
 
   return (
     <ul className={styles.etfHoldings}>
-      {data.data.holdings.map((etfHolding) => (
+      {data.holdings.map((etfHolding) => (
         <Item key={etfHolding.name} {...etfHolding} />
       ))}
       <li>
@@ -31,9 +31,7 @@ export function EtfHoldingsSection({
           (
           <Format
             format="PERCENT"
-            n={
-              data.data.holdings.reduce((t, { weight }) => t + weight, 0) * 100
-            }
+            n={data.holdings.reduce((t, { weight }) => t + weight, 0) * 100}
           />
           )
         </sub>
@@ -74,7 +72,7 @@ function Detail({ info }: QuoteEtfHolding) {
   const statistic = useMemo(
     () =>
       statisticData && quoteData
-        ? joinQuoteStatisticsAndQuote(statisticData.data, quoteData.data)
+        ? joinQuoteStatisticsAndQuote(statisticData, quoteData)
         : undefined,
     [quoteData, statisticData],
   );

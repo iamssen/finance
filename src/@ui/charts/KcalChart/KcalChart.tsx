@@ -30,9 +30,7 @@ export function KcalChart({
   end,
   ...props
 }: KcalChartProps): ReactNode {
-  const { data: { data: lifeIndicatorData } = {} } = useQuery(
-    api('life-indicator'),
-  );
+  const { data: lifeIndicatorData } = useQuery(api('life-indicator'));
 
   const chart = useMemo(
     () => createKcalChartData({ data: data, start, end }),

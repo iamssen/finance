@@ -23,8 +23,8 @@ export function MoneybookEventPage(): ReactNode {
   const { data } = useQuery(api('moneybook'));
 
   const selectedEvent = useMemo(() => {
-    return data?.data.events.find(({ name }) => event === name);
-  }, [data?.data.events, event]);
+    return data?.events.find(({ name }) => event === name);
+  }, [data?.events, event]);
 
   const [filterText, setFilterText] = useState('');
 
