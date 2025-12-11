@@ -84,10 +84,4 @@ export default [
     files: ['**/*.{js,jsx,mjs,cjs}'],
     rules: tseslint.configs.disableTypeChecked.rules,
   },
-  {
-    files: [`**/@ssen/**/*.{ts,tsx,mts,cts}`],
-    rules: {
-      'no-restricted-imports': ['error', { patterns: ['@ui/*'] }],
-    },
-  },
 ];
