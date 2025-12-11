@@ -9,7 +9,6 @@ import { RescuetimeSummaryChart } from '@ui/charts';
 import type { DateItem } from '@ui/components';
 import { api } from '@ui/query';
 import type { ReactNode } from 'react';
-import styles from '../BodySummaryPage.module.css';
 import { rescuetimeSummaryQuery } from '../env.ts';
 
 export interface RescuetimeSectionProps {
@@ -66,7 +65,6 @@ export function RescuetimeSection({
       <RescuetimeSummaryChart
         data={history}
         queries={rescuetimeSummaryQuery}
-        className={styles.chart}
         start={chartStartDate.value}
       />
     </figure>

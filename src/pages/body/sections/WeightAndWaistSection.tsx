@@ -9,7 +9,6 @@ import { WeightAndWaistChart } from '@ui/charts';
 import type { DateItem } from '@ui/components';
 import { api } from '@ui/query';
 import type { ReactNode } from 'react';
-import styles from '../BodySummaryPage.module.css';
 import { getExist } from './getExist.ts';
 
 export interface WeightAndWaistSectionProps {
@@ -58,11 +57,7 @@ export function WeightAndWaistSection({
             ?.date.slice(0, 10)}
         </sub>
       </figcaption>
-      <WeightAndWaistChart
-        data={chartData}
-        className={styles.chart}
-        start={chartStartDate.value}
-      />
+      <WeightAndWaistChart data={chartData} start={chartStartDate.value} />
     </figure>
   );
 }

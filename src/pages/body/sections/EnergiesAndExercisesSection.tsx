@@ -9,7 +9,6 @@ import { EnergyAndExerciseChart } from '@ui/charts';
 import type { DateItem } from '@ui/components';
 import { api } from '@ui/query';
 import type { ReactNode } from 'react';
-import styles from '../BodySummaryPage.module.css';
 import { getExist } from './getExist.ts';
 
 export interface EnergiesAndExercisesSectionProps {
@@ -59,11 +58,7 @@ export function EnergiesAndExercisesSection({
         Energy & Exercise
         <sub aria-label="The date of the last collected data">{lastDate}</sub>
       </figcaption>
-      <EnergyAndExerciseChart
-        data={chartData}
-        className={styles.chart}
-        start={chartStartDate.value}
-      />
+      <EnergyAndExerciseChart data={chartData} start={chartStartDate.value} />
     </figure>
   );
 }

@@ -4,7 +4,6 @@ import { SkinChart } from '@ui/charts';
 import type { DateItem } from '@ui/components';
 import { api } from '@ui/query';
 import type { ReactNode } from 'react';
-import styles from '../BodySummaryPage.module.css';
 
 export interface SkinSectionProps {
   chartStartDate: DateItem;
@@ -41,11 +40,7 @@ export function SkinSection({ chartStartDate }: SkinSectionProps): ReactNode {
           {daySkins.at(-1)?.date}
         </sub>
       </figcaption>
-      <SkinChart
-        data={daySkins}
-        className={styles.chart}
-        start={chartStartDate.value}
-      />
+      <SkinChart data={daySkins} start={chartStartDate.value} />
     </figure>
   );
 }
